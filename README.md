@@ -2,11 +2,11 @@
 
 ## 참가자 및 개발환경
 
-- albireo770 : Golang
-- imsukmin : node 적당한 버전
-- lastone9182 : python 3.6
-- sjjeong : Kotlin 1.2.4
 - wan2land (GM)
+- albireo770 : Golang, `go version go1.9.4 darwin/amd64`
+- imsukmin : Nodejs, `v9.6.1`
+- lastone9182 : Python, `Python 3.6.4`
+- sjjeong : Kotlin 1.2.4 `Kotlin version 1.2.41-release-74 (JRE 1.8.0_101-b13)`
 
 ## 개발환경 테스트 실행하기
 

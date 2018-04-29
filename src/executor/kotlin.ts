@@ -2,15 +2,15 @@
 import {execute as _execute} from "../util/process"
 import * as types from "../types"
 
-export class NodeExecutor implements types.Executor {
+export class KotlinExecutor implements types.Executor {
 
   constructor(private target: string) {}
 
   public async build(): Promise<void> {
-    // empty
+    await _execute(`make`, this.target)
   }
 
   public async execute(args: any[] = []): Promise<string> {
-    return (await _execute(`/usr/local/bin/node main.js ${args.join(" ")}`, this.target)).trim()
+    return await _execute(`kotlin -classpath dist/main.jar MainKt ${args.join(" ")}`, this.target)
   }
 }

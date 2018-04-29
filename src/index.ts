@@ -1,13 +1,15 @@
 
-import {NodeExecutor, GoExecutor} from "./executor"
+import * as executor from "./executor"
 import * as pref from "preference"
 
 (async () => {
-  const nodeExecutor = new NodeExecutor("langs/nodejs")
-  const goExecutor = new GoExecutor("langs/go")
+  const nodeExecutor = new executor.NodeExecutor("langs/nodejs")
+  const goExecutor = new executor.GoExecutor("langs/go")
+  const kotExecutor = new executor.KotlinExecutor("langs/kotlin")
 
   await nodeExecutor.build()
   await goExecutor.build()
+  await kotExecutor.build()
 
   console.log("build complete!")
 
@@ -16,6 +18,9 @@ import * as pref from "preference"
 
   console.log("go!")
   console.log(await goExecutor.execute([1, 2, 3]))
+
+  console.log("kotlin!")
+  console.log(await kotExecutor.execute([1, 2, 3]))
 
   console.log("process complete!")
 })()

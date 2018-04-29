@@ -1,3 +1,3 @@
 
 build:
-	go build -o ./dist/main
+	/usr/local/bin/go build -o ./dist/main

@@ -1,26 +1,23 @@
 
 import * as executor from "./executor"
+import * as types from "./types"
 import * as pref from "preference"
 
 (async () => {
-  const nodeExecutor = new executor.NodeExecutor("langs/nodejs")
-  const goExecutor = new executor.GoExecutor("langs/go")
-  const kotExecutor = new executor.KotlinExecutor("langs/kotlin")
+  const executors: types.Executor[] = [
+    new executor.NodeExecutor("langs/nodejs"),
+    new executor.GoExecutor("langs/go"),
+    new executor.KotlinExecutor("langs/kotlin"),
+    new executor.KotlinExecutor("langs/kotlin"),
+  ]
 
-  await nodeExecutor.build()
-  await goExecutor.build()
-  await kotExecutor.build()
+  await Promise.all(executors.map(ex => ex.build()))
 
   console.log("build complete!")
 
-  console.log("node!")
-  console.log(await nodeExecutor.execute([1, 2, 3]))
+  const outputs = await Promise.all(executors.map(ex => ex.execute([1, 2, 3])))
 
-  console.log("go!")
-  console.log(await goExecutor.execute([1, 2, 3]))
-
-  console.log("kotlin!")
-  console.log(await kotExecutor.execute([1, 2, 3]))
-
+  console.log(outputs)
+  
   console.log("process complete!")
 })()

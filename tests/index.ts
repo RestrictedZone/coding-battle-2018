@@ -1,6 +1,6 @@
 
-import * as executor from "./executor"
-import * as types from "./types"
+import * as executor from "../server/executor"
+import * as types from "../server/types"
 import * as pref from "preference"
 
 (async () => {

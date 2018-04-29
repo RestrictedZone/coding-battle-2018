@@ -11,6 +11,6 @@ export class PythonExecutor implements types.Executor {
   }
 
   public async execute(args: any[] = []): Promise<string> {
-    return await _execute(`python main.py ${args.join(" ")}`, this.target)
+    return (await _execute(`python main.py ${args.join(" ")}`, this.target)).trim()
   }
 }

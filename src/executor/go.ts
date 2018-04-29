@@ -11,6 +11,6 @@ export class GoExecutor implements types.Executor {
   }
 
   public async execute(args: any[] = []): Promise<string> {
-    return await _execute(`dist/main ${args.join(" ")}`, this.target)
+    return (await _execute(`dist/main ${args.join(" ")}`, this.target)).trim()
   }
 }

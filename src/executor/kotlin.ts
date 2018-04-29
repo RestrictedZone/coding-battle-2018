@@ -11,6 +11,6 @@ export class KotlinExecutor implements types.Executor {
   }
 
   public async execute(args: any[] = []): Promise<string> {
-    return await _execute(`kotlin -classpath dist/main.jar MainKt ${args.join(" ")}`, this.target)
+    return (await _execute(`kotlin -classpath dist/main.jar MainKt ${args.join(" ")}`, this.target)).trim()
   }
 }

@@ -1,0 +1,5 @@
+
+default: level1
+
+level1:
+  tiles: forbidden

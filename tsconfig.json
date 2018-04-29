@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["es2017"],
+    "lib": ["es2017", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "declaration": true,
     "pretty": true,
+    "allowJs": true,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,

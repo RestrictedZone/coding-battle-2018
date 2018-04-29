@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "rimraf ./dist && tsc -p .",
+    "test": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "tslint-language-service": "^0.9.6",
+    "typescript": "^2.5.3"
+  },
+  "dependencies": {
+    "@types/node": "^10.0.0",
+    "preference": "^0.0.10",
+    "yaml": "^0.3.0"
+  }
+}

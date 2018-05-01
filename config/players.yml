@@ -1,9 +1,7 @@
 
-player1:
-  lang: kotlin
-  path: 
-
-player2:
-
-player3:
-  lang:
+players:
+  - name: player1
+    lang: kotlin
+    path: 
+  - name: player2
+  - name: player3

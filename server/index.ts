@@ -34,7 +34,11 @@ app.get("/api/map", (req: express.Request, res: express.Response) => {
 app.get("/api/players", (req: express.Request, res: express.Response) => {
   res.json({
     success: true,
-    players: Object.keys(config.players),
+    players: config.players.players.map((player: any) => {
+      return {
+        name: player.name,
+      }
+    }),
   })
 })
 app.post("/api/players/:id/action", (req: express.Request, res: express.Response) => {

@@ -6,15 +6,21 @@
     "dev": "rimraf public && concurrently \"NODE_ENV=dev ts-node server/index.ts\" \"webpack --config webpack.config.js --watch\""
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/chokidar": "^1.7.5",
     "@types/dotenv": "^4.0.3",
+    "@types/eventemitter3": "^2.0.2",
     "@types/express": "^4.11.1",
+    "@types/lodash": "^4.14.108",
     "@types/node": "^9",
     "@types/pixi.js": "^4.7.3",
+    "axios": "^0.18.0",
     "chokidar": "^2.0.3",
     "copy-webpack-plugin": "^4.5.1",
     "dotenv": "^5.0.1",
+    "eventemitter3": "^3.1.0",
     "express": "^4.16.3",
+    "lodash": "^4.17.10",
     "pixi.js": "^4.7.3",
     "preference": "^0.0.10",
     "yaml": "^0.3.0"

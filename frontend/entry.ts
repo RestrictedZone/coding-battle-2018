@@ -1,6 +1,7 @@
 
 require("@/assets/scss/entry.scss") // tslint:disable-line
 
+import * as loaders from "./loaders"
 import * as pixi from "pixi.js"
 import * as entity from "./entity"
 import * as api from "./api"
@@ -24,6 +25,11 @@ function act(player: entity.Player): number {
   if ($elem) {
     $elem.appendChild(app.view)
   }
+
+  // loading
+  const loader = new pixi.loaders.Loader()
+
+  await loaders.loadResources(app, loader)
 
   const mapRawData: api.MapRawData = await api.getMap()
   const playerRawDatas: api.PlayerRawData[] = await api.getPlayers()

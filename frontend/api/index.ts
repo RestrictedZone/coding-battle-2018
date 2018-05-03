@@ -5,6 +5,7 @@ export interface MapRawData {
   width: number
   height: number
   tiles: number[]
+  sprites: number[]
 }
 
 export interface PlayerRawData {

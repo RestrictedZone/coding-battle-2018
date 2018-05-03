@@ -23,6 +23,13 @@ const tRoadTR = pixi.Texture.fromImage("/static/images/road_asphalt/road_asphalt
 const tRoadBL = pixi.Texture.fromImage("/static/images/road_asphalt/road_asphalt24.png")
 const tRoadBR = pixi.Texture.fromImage("/static/images/road_asphalt/road_asphalt25.png")
 
+const tRoadE = pixi.Texture.fromImage("/static/images/road_asphalt/road_asphalt70.png")
+
+const tRoadST = pixi.Texture.fromImage("/static/images/road_asphalt/road_asphalt85.png")
+const tRoadSR = pixi.Texture.fromImage("/static/images/road_asphalt/road_asphalt86.png")
+const tRoadSB = pixi.Texture.fromImage("/static/images/road_asphalt/road_asphalt83.png")
+const tRoadSL = pixi.Texture.fromImage("/static/images/road_asphalt/road_asphalt84.png")
+
 function createSprite(tex: pixi.Texture, x: number, y: number): pixi.Sprite {
   const sprite = new pixi.Sprite(tex)
   sprite.x = x * TILE_WIDTH
@@ -41,6 +48,12 @@ export class Map extends pixi.Container {
       const x = index % this.map.width
       const y = index / this.map.width | 0 // tslint:disable-line no-bitwise
       switch (tile & 255) { // tslint:disable-line no-bitwise
+        case 128:
+          this.addChild(createSprite(tRoadE, x, y))
+          break
+        case 129:
+          this.addChild(createSprite(tRoadSB, x, y))
+          break
         case 2:
           this.addChild(createSprite(tGrass, x, y))
           break

@@ -1,7 +1,10 @@
 
 players:
-  - name: player1
-    lang: kotlin
-    path: 
-  - name: player2
-  - name: player3
+  - name: gogo
+    path: langs/go
+  - name: kodroid
+    path: langs/kotlin
+  - name: nod
+    path: langs/nodejs
+  - name: snake
+    path: langs/python

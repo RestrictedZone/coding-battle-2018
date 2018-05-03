@@ -5,10 +5,10 @@ import * as pref from "preference"
 
 (async () => {
   const executors: types.Executor[] = [
-    new executor.NodeExecutor("langs/nodejs"),
-    new executor.GoExecutor("langs/go"),
-    new executor.KotlinExecutor("langs/kotlin"),
-    new executor.PythonExecutor("langs/python"),
+    new executor.Executor("langs/nodejs"),
+    new executor.Executor("langs/go"),
+    new executor.Executor("langs/kotlin"),
+    new executor.Executor("langs/python"),
   ]
 
   await Promise.all(executors.map(ex => ex.build()))

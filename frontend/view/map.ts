@@ -49,17 +49,20 @@ export class Map extends pixi.Container {
     this.map.sprites.forEach((sprite, index) => {
       const x = index % this.map.width
       const y = index / this.map.width | 0 // tslint:disable-line no-bitwise
-      this.addChild(createSprite(pixi.Texture.fromImage(`/static/images/tiles/${sprite}.png`), x, y))
+      this.addChild(createSprite(pixi.Texture.fromImage(`/static/images/tiles/0.png`), x, y))
+      if (sprite) {
+        this.addChild(createSprite(pixi.Texture.fromImage(`/static/images/tiles/${sprite}.png`), x, y))
+      }
       this.addChild(createLine(x, y))
   })
     // 맵 디버깅용!!
     // this.map.tiles.forEach((tile, index) => {
     //   const x = index % this.map.width
     //   const y = index / this.map.width | 0 // tslint:disable-line no-bitwise
-    //   if (tile > 0) {
-    //     // this.addChild(createRectangle(0x0000FF, x, y))
-    //   } else {
+    //   if (tile === 0) {
     //     this.addChild(createRectangle(0xFF0000, x, y))
+    //   } else if (tile > 2) {
+    //     this.addChild(createRectangle(0x0000FF, x, y))
     //   }
     // })
     this.pivot.set(this.originWidth / 2, this.originHeight / 2)

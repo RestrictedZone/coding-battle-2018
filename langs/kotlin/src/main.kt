@@ -11,7 +11,7 @@ class Pathfinder(val args: List<Int>) {
 
     fun execute() {
         val mapWidth = args[0]
-        val mapHeight = args[0]
+        val mapHeight = args[1]
 
         val tiles = args.slice(2..mapWidth *mapHeight + 1)
         val playerArgs = args.slice(mapWidth *mapHeight + 2..args.size - 1)

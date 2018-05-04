@@ -43,7 +43,7 @@ export class Runner {
 
     // generate models
     const map = entity.Map.createFromApiRawData(this.mapRawData)
-    const startPoints = map.getStartPoints()
+    const startPoints = _.shuffle(map.getStartPoints())
     const players = _.shuffle(this.playerRawDatas)
       .slice(0, startPoints.length) // 플레이어가 start point 보다 많으면 자른다!
       .map<entity.Player>((player, index) => {

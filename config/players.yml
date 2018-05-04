@@ -1,10 +1,4 @@
 
 players:
-  - name: gogo
-    path: langs/go
-  - name: kodroid
-    path: langs/kotlin
-  - name: nod
-    path: langs/nodejs
-  - name: snake
-    path: langs/python
+  - name: jongwony
+    path: players/jongwony

@@ -3,7 +3,8 @@
   "scripts": {
     "build": "rimraf ./dist && tsc -p .",
     "test": "ts-node tests/index.ts",
-    "dev": "rimraf public && concurrently \"NODE_ENV=dev ts-node server/index.ts\" \"webpack --config webpack.config.js --watch\""
+    "dev": "rimraf public && concurrently \"NODE_ENV=dev ts-node server/index.ts\" \"webpack --config webpack.config.js --watch\"",
+    "start": "rimraf public && webpack --config webpack.config.js && NODE_ENV=dev ts-node server/index.ts"
   },
   "dependencies": {
     "@tweenjs/tween.js": "^17.2.0",

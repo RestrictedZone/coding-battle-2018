@@ -77,7 +77,7 @@ const main = async () => {
       success: true,
       player: {
         id: req.params.id,
-        response: parseInt(response, 10),
+        response: parseInt(response.replace(/[^0-9]/g, ""), 10),
       },
     })
   })

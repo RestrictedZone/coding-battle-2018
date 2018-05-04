@@ -7,13 +7,10 @@ import * as entity from "./entity"
 import * as api from "./api"
 import * as view from "./view"
 import * as _ from "lodash"
+import axios from "axios"
 
 function defineGlobal(key: string, value: any): void {
   (window as any)[key] = value
-}
-
-function act(player: entity.Player): number {
-  return _.random(0, 3)
 }
 
 (async () => {
@@ -46,6 +43,22 @@ function act(player: entity.Player): number {
 
   // 게임 진행하기
   async function startGame(): Promise<void> {
+    async function act(me: entity.Player): Promise<number> {
+      let params = [
+        map.width,
+        map.height,
+      ]
+      params = params.concat(map.tiles)
+      params.push(players.length)
+      params.push(me.point.x)
+      params.push(me.point.y)
+      players.filter(player => player.name !== me.name).forEach((player) => {
+        params.push(player.point.x)
+        params.push(player.point.y)
+      })
+      const action = await axios.post(`/api/players/${me.name}/action?arguments=${params.join(",")}`)
+      return action.data.player.response
+    }
     const turnedPlayers = _.shuffle(players.slice())
     let victoryPlayer: entity.Player | undefined
     for (const turnedPlayer of turnedPlayers) {
@@ -53,7 +66,7 @@ function act(player: entity.Player): number {
       let xToMove: number = turnedPlayer.point.x
       let yToMove: number = turnedPlayer.point.y
       let foundPlayer: entity.Player | undefined
-      switch (act(turnedPlayer)) {
+      switch (await act(turnedPlayer)) {
         case 0:
           console.log(turnedPlayer.name, "은 위로 이동하기를 시전하였다.")
           xToMove = turnedPlayer.point.x
@@ -101,7 +114,7 @@ function act(player: entity.Player): number {
     if (victoryPlayer) {
       console.log(`게임 끝! ${victoryPlayer.name} 승리!!`)
     } else {
-      setTimeout(startGame, 1200) // next turn!
+      setTimeout(startGame, 2000) // next turn!
     }
   }
   startGame()

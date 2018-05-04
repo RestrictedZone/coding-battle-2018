@@ -42,7 +42,7 @@ export class Player {
     return action.data.player.response
   }
 
-  public move(direction: number, map: Map, players: Player[], pushed: boolean = false): boolean {
+  public move(direction: number, map: Map, players: Player[], victoryPlayers: Player[], pushed: boolean = false): boolean {
     const others = players.filter(player => player.name !== this.name)
     let xToMove = this.point.x
     let yToMove = this.point.y
@@ -91,9 +91,13 @@ export class Player {
     }
     const foundPlayer = findPlayers(others, xToMove, yToMove)
     if (foundPlayer) {
-      if (!foundPlayer.move(direction, map, players, true)) {
+      if (!foundPlayer.move(direction, map, players, victoryPlayers, true)) {
         return false
       }
+    }
+    if (map.isEndPoint(xToMove, yToMove)) {
+      victoryPlayers.push(this)
+      console.log(`${this.name} ${victoryPlayers.length}등!`)
     }
     this.point.x = xToMove
     this.point.y = yToMove

@@ -21,14 +21,13 @@ function defineGlobal(key: string, value: any): void {
 function createRankText(player: entity.Player, rank: number): pixi.Text {
   const text = new pixi.Text(`#${rank}. ${player.name}`, {
     fill: "#ffffff",
-    fontSize: "40px",
     fontFamily: "Montserrat",
     wordWrap : true,
     wordWrapWidth : 800,
   })
-  text.pivot.x = 100
+  text.anchor.set(0.5)
+  // text.pivot.x = 100
   text.x = window.innerWidth / 2
-  text.y = window.innerHeight / 5 + (rank * 50)
   return text
 }
 
@@ -135,6 +134,8 @@ export class Runner {
       victories.forEach((victory, index) => {
         const text = createRankText(victory, index + 1)
         text.alpha = (victories.length - index) / victories.length
+        text.style.fontSize = `${45 * (victories.length - index + 2) / (victories.length + 2)}px`
+        text.y = window.innerHeight / 6 + 50 * index
         app.stage.addChild(text)
       })
       app.stage.addChild(textRetry)

@@ -54,7 +54,8 @@ export class Map extends pixi.Container {
         this.addChild(createSprite(pixi.Texture.fromImage(`/static/images/tiles/${sprite}.png`), x, y))
       }
       this.addChild(createLine(x, y))
-  })
+    })
+
     // 맵 디버깅용!!
     // this.map.tiles.forEach((tile, index) => {
     //   const x = index % this.map.width

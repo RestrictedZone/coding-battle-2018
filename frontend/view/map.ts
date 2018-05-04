@@ -22,9 +22,20 @@ function createRectangle(color: number, x: number, y: number): pixi.Graphics {
   rect.drawRect(
     x * TILE_WIDTH + padding,
     y * TILE_HEIGHT + padding,
-    TILE_WIDTH - 2 * 10,
-    TILE_HEIGHT - 2 * 10)
+    TILE_WIDTH - 2 * padding,
+    TILE_HEIGHT - 2 * padding)
   rect.endFill()
+  return rect
+}
+
+function createLine(x: number, y: number): pixi.Graphics {
+  const rect = new pixi.Graphics()
+  rect.lineStyle(4, 0xffffff, 0.1)
+  rect.drawRect(
+    x * TILE_WIDTH,
+    y * TILE_HEIGHT,
+    TILE_WIDTH,
+    TILE_HEIGHT)
   return rect
 }
 
@@ -39,7 +50,8 @@ export class Map extends pixi.Container {
       const x = index % this.map.width
       const y = index / this.map.width | 0 // tslint:disable-line no-bitwise
       this.addChild(createSprite(pixi.Texture.fromImage(`/static/images/tiles/${sprite}.png`), x, y))
-    })
+      this.addChild(createLine(x, y))
+  })
     // 맵 디버깅용!!
     // this.map.tiles.forEach((tile, index) => {
     //   const x = index % this.map.width

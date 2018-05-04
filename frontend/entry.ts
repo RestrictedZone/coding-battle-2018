@@ -16,6 +16,12 @@ import axios from "axios"
   if ($elem) {
     $elem.appendChild(app.view)
   }
+  function onResize(): void {
+    app.renderer.resize(window.innerWidth, window.innerHeight)
+  }
+  onResize()
+  window.addEventListener("resize", onResize)
+
 
   // loading
   const loader = new pixi.loaders.Loader()
@@ -27,10 +33,4 @@ import axios from "axios"
 
   const runner = new game.Runner(mapRawData, playerRawDatas)
   runner.run(app)
-
-  function onResize(): void {
-    app.renderer.resize(window.innerWidth, window.innerHeight)
-  }
-  onResize()
-  window.addEventListener("resize", onResize)
 })()

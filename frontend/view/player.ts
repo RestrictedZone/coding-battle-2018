@@ -11,12 +11,6 @@ const TILE_HEIGHT = constants.resource.TILE_HEIGHT
 
 let playerUniqIndex = 0
 
-function animate(time: number): void {
-  requestAnimationFrame(animate)
-  tween.update(time)
-}
-requestAnimationFrame(animate)
-
 export class Player extends pixi.Container {
 
   protected spriteCarImage: pixi.Sprite

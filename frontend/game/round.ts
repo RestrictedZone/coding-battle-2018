@@ -18,12 +18,15 @@ export class Round {
       }
       await new Promise(resolve => setTimeout(resolve, 100)) // delay
 
-      const direction = await turnedPlayer.strategy(this.map, this.players)
+      try {
+        const direction = await turnedPlayer.strategy(this.map, this.players)
+        turnedPlayer.move(direction, this.map, this.players, this.victoryPlayers)
 
-      turnedPlayer.move(direction, this.map, this.players, this.victoryPlayers)
-
-      if (this.victoryPlayers.length === this.players.length) {
-        return this.victoryPlayers
+        if (this.victoryPlayers.length === this.players.length) {
+          return this.victoryPlayers
+        }
+      } catch (e) {
+        console.warn(e)
       }
     }
 

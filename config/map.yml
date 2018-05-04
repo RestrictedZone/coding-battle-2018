@@ -1,5 +1,5 @@
 
-default: level2
+default: level1
 level1:
   width: 12
   height: 12

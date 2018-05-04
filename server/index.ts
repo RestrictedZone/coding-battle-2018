@@ -72,14 +72,22 @@ const main = async () => {
       return
     }
     const args = ((req.query.arguments || "") as string)
-    const response = await foundPlayer.executor.execute(args.split(","))
-    res.json({
-      success: true,
-      player: {
-        id: req.params.id,
-        response: parseInt(response.replace(/[^0-9]/g, ""), 10),
-      },
-    })
+    try {
+      const response = await foundPlayer.executor.execute(args.split(","))
+      res.json({
+        success: true,
+        player: {
+          id: req.params.id,
+          response: parseInt(response.replace(/[^0-9]/g, ""), 10),
+        },
+      })
+      return
+    } catch (e) {
+      res.json({
+        success: false,
+        error: e.message,
+      })
+    }
   })
   app.listen(port, host)
 }

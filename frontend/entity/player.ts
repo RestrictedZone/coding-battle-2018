@@ -38,8 +38,11 @@ export class Player {
       params.push(other.point.x)
       params.push(other.point.y)
     })
-    const action = await axios.post(`/api/players/${this.name}/action?arguments=${params.join(",")}`)
-    return action.data.player.response
+    const response = await axios.post(`/api/players/${this.name}/action?arguments=${params.join(",")}`)
+    if (!response.data.success) {
+      throw new Error(response.data.error)
+    }
+    return response.data.player.response
   }
 
   public move(direction: number, map: Map, players: Player[], victoryPlayers: Player[], pushed: boolean = false): boolean {

@@ -24,10 +24,13 @@ async function loadConfig(): Promise<void> {
       executor: new executor.Executor(path.resolve(process.cwd(), player.path)),
     }
   })
-  await Promise.all(afterExecutors.map(afterExecutor => afterExecutor.executor.build()))
-  players = afterExecutors
-
-  console.log("build complete!")
+  try {
+    await Promise.all(afterExecutors.map(afterExecutor => afterExecutor.executor.build()))
+    players = afterExecutors
+    console.log("build complete!")
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 chokidar.watch("config").on("change", async () => {

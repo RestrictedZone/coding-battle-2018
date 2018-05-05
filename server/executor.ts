@@ -11,6 +11,6 @@ export class Executor implements types.Executor {
   }
 
   public async execute(args: any[] = []): Promise<string> {
-    return (await _execute(`./entry.sh ${args.join(" ")}`, this.target)).trim()
+    return (await _execute(`./entry.sh ${args.join(" ")}`, this.target, 6000)).trim()
   }
 }
